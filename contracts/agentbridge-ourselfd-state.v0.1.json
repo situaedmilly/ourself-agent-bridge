@@ -1,0 +1,59 @@
+{
+  "version": "0.1",
+  "signal": "SIGNAL#73017",
+  "state": {
+    "agentbridge": "CONTRACT_SURFACE",
+    "ourselfd": "RUNTIME_SURFACE",
+    "self_attestation": "PROHIBITED",
+    "execution_verification": "EXTERNAL"
+  },
+  "bridge_contract": {
+    "input": "SUPERBIN_IR_V1",
+    "admission": true,
+    "routing": true,
+    "runtime_execution": false,
+    "evidence_verification": false
+  },
+  "ourselfd_contract": {
+    "transition_endpoint": "POST /v1/transitions/request",
+    "capabilities": ["repo.read", "repo.status", "repo.diff"],
+    "forbidden": [
+      "shell.execute",
+      "process.start",
+      "repo.write",
+      "file.write",
+      "arbitrary_filesystem_access"
+    ],
+    "state_machine": [
+      "REQUESTED",
+      "RESOLVED",
+      "AUTHENTICATED",
+      "AUTHORIZED",
+      "PRECONDITIONS_SATISFIED",
+      "ADMITTED",
+      "ACTUATED",
+      "OBSERVED",
+      "RECEIPTED"
+    ]
+  },
+  "non_collapse": [
+    "INTENT != AUTHORITY",
+    "AUTHORITY != ADMISSION",
+    "ADMISSION != ACTUATION",
+    "ACTUATION != OBSERVATION",
+    "OBSERVATION != RECEIPT",
+    "RECEIPT != MEMORY"
+  ],
+  "observed_git_state": {
+    "repository": "situaedmilly/ourself-agent-bridge-kernel",
+    "ourselfd_merge_commit": "dbfb02b273946a4ab4ee08a0336b1064d73baf3e",
+    "status": "OURSELFd_v0.1_IMPLEMENTED_IN_GIT"
+  },
+  "agentbridge_repository_state": {
+    "repository": "situaedmilly/ourself-agent-bridge",
+    "status": "EMPTY_BEFORE_THIS_COMMIT"
+  },
+  "execution_claim": "GIT_CONTRACT_MUTATION_ONLY",
+  "runtime_execution_claim": "NOT_CLAIMED",
+  "independent_verification": "PENDING"
+}
